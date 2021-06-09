@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="jq.js"></script>
+    <script src="flv.js"></script>
+    <title>Title</title>
+    <style>
+
+    </style>
+
+</head>
+<body>
+<video id="videoElement"></video>
+<div onclick="test()">123123123</div>
+<video id="videoElement2" width="200"  controls="controls" muted>
+    <source src="http://192.168.1.50:8079/live/test1.m3u8" type="application/x-mpegURL">
+</video>
+</body>
+<script>
+
+
+    // if (flvjs.isSupported()) {
+    //     var videoElement = document.getElementById('videoElement');
+    //     var flvPlayer = flvjs.createPlayer({
+    //         type: 'flv',
+    //         hasAudio:false,
+    //         url: 'http://192.168.1.50:8079/live/test1.flv'
+    //     });
+    //     // console.log(flvPlayer)
+    //     flvPlayer.attachMediaElement(videoElement);
+    //     flvPlayer.load();
+    //     // flvPlayer.play();
+    // }
+    //
+    // function test() {
+    //     console.log(flvPlayer)
+    //     flvPlayer.play();
+    // }
+
+</script>
+</html>

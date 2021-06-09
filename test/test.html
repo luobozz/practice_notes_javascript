@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Div+Css+JS替代Marquee滚动效果(上) -- 无缝滚动</title>
+    <style type="text/css">
+        .Mar
+        {
+            background: #FFF;
+            overflow: hidden;
+            border: 1px dashed #CCC;
+            width: 800px; /*页面滚动需要显示的宽度*/
+        }
+        .Mar img
+        {
+            border: 3px solid #F2F2F2;
+            width: 124px;
+            height: 93px;
+        }
+        .inMar
+        {
+            float: left;
+            width: 3500px; /*能在一行放下所有滚动的图片的总宽度*2   像素值或者百分比*/
+        }
+    </style>
+</head>
+<body>
+<div id="Mar" class="Mar">
+    <div id="inMar" class="inMar">
+        <div id="Mar1" style="float:left;">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：1</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：2</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：3</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg" /><br />轿车：4</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg" /><br />轿车：5</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：6</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：7</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：8</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：9</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：10</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：11</td>
+                    <td><img src="http://www.ln2car.com/upload/usedcarsell/2010-03-29/ee6a7a5e-db5f-4c9e-8c5f-3a3edfde0f40.jpg_tbi2.jpg"/><br />轿车：12</td>
+                </tr>
+            </table>
+
+
+        </div>
+        <div id="Mar2" style="float:left;">
+        </div>
+    </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+    var speed = 12; //数字越小速度越快
+    var div = document.getElementById("Mar");
+    var div1 = document.getElementById("Mar1");
+    var div2 = document.getElementById("Mar2");
+    div2.innerHTML = div1.innerHTML;
+    function Marquee() {
+        //向右滚动
+        //if (div.scrollLeft <= 0)
+        //div.scrollLeft += div2.offsetWidth
+        //else {
+        //div.scrollLeft--
+        //}
+        //向左滚动
+        if (div2.offsetWidth - div.scrollLeft <= 0)
+            div.scrollLeft -= div1.offsetWidth
+        else {
+            div.scrollLeft++;
+        }
+    }
+    var MyMarquee = setInterval(Marquee, speed);
+    div.onmouseover = function() { clearInterval(MyMarquee) };
+    div.onmouseout = function() { MyMarquee = setInterval(Marquee, speed) };
+</script>
+
+</body>
+</html>
