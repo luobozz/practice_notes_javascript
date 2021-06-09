@@ -1,15 +1,18 @@
 /**
  * @author chenlingyu
  */
+const util=require("../utils")
+
+const ps=[]
+
 const ex = () => {
-    const args=0
     const must = [];
     return {
-        lc: () => {
+        lc: (args) => {
             let answer = args
             return answer
         }
     }
 }
 
-console.log(ex().lc())
+util.run(ps,ex)
