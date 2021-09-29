@@ -1,5 +1,5 @@
 //TODO 整理格式化输出部分
-//TODO 整理axios封装部分
+//
 //console terminal color
 // for(var i=1;i<=8;i++){
 //     console.log(`\x1B[${i}m%s\x1B[0m`, i)
