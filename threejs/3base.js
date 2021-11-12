@@ -4,7 +4,7 @@
 
 function initSceneObjs(scene,...objs) {
     objs.forEach(o=>{
-        console.log(`add obj-${o.uuid}`)
+        console.log(`add obj-${o.uuid}`,o)
         scene.add(o)
     })
 }

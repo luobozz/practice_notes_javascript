@@ -25,8 +25,25 @@ function getLine(){
 }
 
 function getCube(){
-    var geometry = new THREE.CubeGeometry(1,1,1);
-    var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-    var cube = new THREE.Mesh(geometry, material);
-    return cube;
+    // var geometry = new THREE.CubeGeometry(1,1,1);
+    // var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+    // var cube = new THREE.Mesh(geometry, material);
+
+    console.log(THREE)
+
+    var group = new THREE.Group();
+
+    var geometry = new THREE.BufferGeometry();
+    geometry.addAttribute( 'position', new Float32BufferAttribute( [], 3 ) );
+
+    var lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff, transparent: true, opacity: 0.5 } );
+    var meshMaterial = new THREE.MeshPhongMaterial( { color: 0x156289, emissive: 0x072534, side: DoubleSide, flatShading: true } );
+
+    group.add( new LineSegments( geometry, lineMaterial ) );
+    group.add( new Mesh( geometry, meshMaterial ) );
+
+    // var options = chooseFromHash( group );
+
+
+    return group;
 }
