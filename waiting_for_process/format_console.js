@@ -79,7 +79,7 @@ const api = {
                 })
             })
         },
-        psm:(depId, opt) => {
+        psm: (depId, opt) => {
             const url = `${URL.fileServiceApi}psm/${depId}${opt.sasd ? "?sasd=true" : ""}`
             if (opt.getUrl) {
                 return url
@@ -172,7 +172,7 @@ let methods = {
                             checkAddr: api.fs.psm(p.id, {
                                 getUrl: true
                             }),
-                            connStatus:false
+                            connStatus: false
                         }
                         this.depList.push(dep)
                     })
@@ -247,21 +247,21 @@ let methods = {
             console.log('\x1B[' + lvl + 'm%s\x1B[0m', (no ? "--" : "| ") + msg + (no ? "-" : "|"))
         }
         console.log()
-        tableMsg(2, fix(8 + 8+ 8 + 25 + 18 + 18 + 18 + 18, "-"), 1)
-        tableMsg(1, strFix(8, "序号") + strFix(8, "联通状态")+strFix(8, "级别") + strFix(25, "机构") + strFix(18, "机构号") + strFix(18, "叫号(fs)") + strFix(18, "叫号(中心端)") + strFix(18, "叫号(中心端收到上报)"))
-        tableMsg(2, fix(8+ 8 + 8 + 25 + 18 + 18 + 18 + 18, "-"))
-        const detailMsg = (lvl,connstatus, no, name, depId, num, ctNum, reportNum) => {
-            tableMsg(lvl, strFix(8, no) +strFix(8, connstatus?"√":"×")+ strFix(8, lvl == 41 ? "无叫号" : lvl == 31 ? "严重" : lvl == 32 ? "微小" : lvl == 33 ? "一般" : "正常") + strFix(25, name) + strFix(18, depId) + strFix(18, num) + strFix(18, ctNum) + strFix(18, reportNum))
+        tableMsg(2, fix(8 + 8 + 8 + 25 + 18 + 18 + 18 + 18, "-"), 1)
+        tableMsg(1, strFix(8, "序号") + strFix(8, "联通状态") + strFix(8, "级别") + strFix(25, "机构") + strFix(18, "机构号") + strFix(18, "叫号(fs)") + strFix(18, "叫号(中心端)") + strFix(18, "叫号(中心端收到上报)"))
+        tableMsg(2, fix(8 + 8 + 8 + 25 + 18 + 18 + 18 + 18, "-"))
+        const detailMsg = (lvl, connstatus, no, name, depId, num, ctNum, reportNum) => {
+            tableMsg(lvl, strFix(8, no) + strFix(8, connstatus ? "√" : "×") + strFix(8, lvl == 41 ? "无叫号" : lvl == 31 ? "严重" : lvl == 32 ? "微小" : lvl == 33 ? "一般" : "正常") + strFix(25, name) + strFix(18, depId) + strFix(18, num) + strFix(18, ctNum) + strFix(18, reportNum))
         }
         for (let i = 0; i < this.depList.length; i++) {
             p = this.depList[i]
-            let connStatus=false
+            let connStatus = false
             await api.fs.psm(p.depId, {
                 timeout: 3000
-            }).then(r=>{
-                connStatus=true
-            }).catch(e=>{
-                connStatus=false
+            }).then(r => {
+                connStatus = true
+            }).catch(e => {
+                connStatus = false
             })
             const fsNum = this.fsCall.filter(o => p.depId == o.depId)?.[0]?.num | 0
             this.fsTotal += fsNum
@@ -270,10 +270,10 @@ let methods = {
             const reportNum = this.ctReportCall.filter(o => p.depId == o.depId)?.[0]?.num | 0
             this.ctReportTotal += reportNum
             const lvl = fsNum == 0 ? 41 : reportNum == 0 ? 31 : fsNum > reportNum ? 33 : p.num - ctCallNum > reqFix ? 32 : 2
-            detailMsg(lvl,connStatus, i + 1, p.name, p.depId, fsNum, ctCallNum, reportNum)
+            detailMsg(lvl, connStatus, i + 1, p.name, p.depId, fsNum, ctCallNum, reportNum)
         }
 
-        tableMsg(2, fix(8+ 8 + 8 + 25 + 18 + 18 + 18 + 18, "-"), 1)
+        tableMsg(2, fix(8 + 8 + 8 + 25 + 18 + 18 + 18 + 18, "-"), 1)
 
         console.log()
 
