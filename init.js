@@ -1,3 +1,14 @@
-#!'C:\Program Files\nodejs\node.exe'
+const { createInterface } = require("readline")
+const { exec } = require("child_process")
+const reader = createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
 
-console.log(123);
+reader.question(`名称: `, input => {
+  const initHome = `${__dirname}/${input}`
+  let cmd = `npm create vite@latest ${input} --template vue-ts`
+  exec(cmd)
+  reader.close()
+  // console.log(cmd);
+})

@@ -1,0 +1,19 @@
+{
+  "name": "practice_notes_javascript",
+  "version": "1.0.0",
+  "description": "## 开始新模块 `npm create vite@latest  --template vue-ts`",
+  "scripts": {
+    "init":"node init.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luobozz/practice_notes_javascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luobozz/practice_notes_javascript/issues"
+  },
+  "homepage": "https://github.com/luobozz/practice_notes_javascript#readme"
+}
